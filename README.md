@@ -27,27 +27,31 @@ CREATE DATABASE vibe_db OWNER vibe_user;
 ```
 
 ### 2. 애플리케이션 설정
-`src/main/resources/application-dev.yml` 파일에서 데이터베이스 연결 정보를 확인하세요. 환경 변수(`DB_PASSWORD`)를 사용하거나 실제 비밀번호로 수정할 수 있습니다.
+`src/main/resources` 폴더 아래의 프로파일별 설정을 확인하세요.
+- `application-dev.yml`: PostgreSQL 기반 (k3s 환경 등)
+- `application-local.yml`: MySQL 기반 (로컬 DB 환경)
 
-```yaml
-spring:
-  datasource:
-    url: jdbc:postgresql://db.club012.com:5432/vibe_db
-    username: vibe_user
-    password: ${DB_PASSWORD}
-```
+환경 변수(`DB_PASSWORD`)를 사용하거나 실제 비밀번호로 수정할 수 있습니다.
 
 ## 🏃 실행 방법
 
-### 로컬 환경에서 실행
-Maven Wrapper를 사용하여 애플리케이션을 실행합니다.
+### 로컬 환경에서 실행 (MySQL 사용)
+MySQL이 로컬(3306 포트)에 실행 중이어야 하며, `vibe_db` 데이터베이스가 생성되어 있어야 합니다.
 
 ```bash
-# 환경 변수 설정 (macOS/Linux)
+# 환경 변수 설정
+export DB_PASSWORD=your_password
+export SPRING_PROFILES_ACTIVE=local
+
+# 애플리케이션 실행
+./mvnw spring-boot:run
+```
+
+### 개발 환경에서 실행 (PostgreSQL 사용)
+```bash
 export DB_PASSWORD=your_password
 export SPRING_PROFILES_ACTIVE=dev
 
-# 애플리케이션 실행
 ./mvnw spring-boot:run
 ```
 

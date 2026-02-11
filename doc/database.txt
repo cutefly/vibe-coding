@@ -1,2 +1,9 @@
+{PostgreSQL}
 CREATE USER vibe_user WITH ENCRYPTED PASSWORD '${DB_PASSWORD}';
 CREATE DATABASE vibe_db OWNER vibe_user;
+
+{MySQL}
+CREATE DATABASE vibe_db;
+CREATE USER 'vibe_user'@'%' IDENTIFIED BY 'user_vibe';
+GRANT ALL PRIVILEGES ON vibe_db.* TO 'vibe_user'@'%';
+FLUSH PRIVILEGES;
