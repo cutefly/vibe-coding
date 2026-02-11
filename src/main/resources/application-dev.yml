@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: vibe-coding
+  datasource:
+    url: jdbc:postgresql://db.club012.com:5432/vibe_db
+    username: vibe_user
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  thymeleaf:
+    cache: false
