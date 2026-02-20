@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 사용자 정보 관리를 위한 웹 요청을 처리하는 컨트롤러 클래스입니다.
+ */
 @Controller
 @RequestMapping("/users")
 @RequiredArgsConstructor

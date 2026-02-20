@@ -10,6 +10,9 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+/**
+ * 사용자 정보를 나타내는 JPA 엔티티(Entity) 모델 클래스입니다.
+ */
 @Entity
 @Table(name = "users")
 @Getter

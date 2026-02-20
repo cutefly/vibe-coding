@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * UserService 인터페이스의 구현체로, 사용자 관련 비즈니스 로직과 데이터 트랜잭션을 처리합니다.
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
