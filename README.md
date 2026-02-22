@@ -30,6 +30,7 @@ CREATE DATABASE vibe_db OWNER vibe_user;
 `src/main/resources` 폴더 아래의 프로파일별 설정을 확인하세요.
 - `application-dev.yml`: PostgreSQL 기반 (k3s 환경 등)
 - `application-local.yml`: MySQL 기반 (로컬 DB 환경)
+- `application-supabase.yml`: Supabase (Cloud PostgreSQL) 기반
 
 환경 변수(`DB_PASSWORD`)를 사용하거나 실제 비밀번호로 수정할 수 있습니다.
 
@@ -51,6 +52,16 @@ export SPRING_PROFILES_ACTIVE=local
 ```bash
 export DB_PASSWORD=your_password
 export SPRING_PROFILES_ACTIVE=dev
+
+./mvnw spring-boot:run
+```
+
+### Supabase 환경에서 실행
+Supabase의 Cloud PostgreSQL 서비스를 사용합니다. `DB_PASSWORD` 환경 변수에 Supabase 데이터베이스 암호가 설정되어 있어야 합니다.
+
+```bash
+export DB_PASSWORD=your_supabase_db_password
+export SPRING_PROFILES_ACTIVE=supabase
 
 ./mvnw spring-boot:run
 ```
