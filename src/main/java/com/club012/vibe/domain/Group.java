@@ -13,7 +13,7 @@ import java.util.Set;
  * 그룹 정보를 나타내는 JPA 엔티티(Entity) 모델 클래스입니다.
  */
 @Entity
-@Table(name = "groups")
+@Table(name = "poc_groups")
 @Getter
 @Setter
 @NoArgsConstructor

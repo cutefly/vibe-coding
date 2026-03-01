@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
  * 사용자 정보를 나타내는 JPA 엔티티(Entity) 모델 클래스입니다.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "poc_users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,6 +30,6 @@ public class User {
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    @JoinTable(name = "poc_user_groups", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     private java.util.Set<Group> groups = new java.util.HashSet<>();
 }
