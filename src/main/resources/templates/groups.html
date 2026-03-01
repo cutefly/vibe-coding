@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Users</title>
+    <title>Groups</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,8 +44,7 @@
             font-weight: bold;
         }
 
-        .form-container input[type="text"],
-        .form-container input[type="email"] {
+        .form-container input[type="text"] {
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 10px;
@@ -79,48 +78,60 @@
         .delete-link {
             color: #dc3545;
         }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
     </style>
 </head>
 
 <body>
-    <nav style="margin-bottom: 20px;">
-        <a th:href="@{/users}" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #333;">User
-            Management</a>
-        <a th:href="@{/groups}" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #333;">Group
-            Management</a>
+    <nav>
+        <a th:href="@{/users}">User Management</a>
+        <a th:href="@{/groups}">Group Management</a>
     </nav>
-    <h1>User Management</h1>
+
+    <h1>Group Management</h1>
 
     <div class="form-container">
-        <h2>Add New User</h2>
-        <form action="#" th:action="@{/users}" th:object="${user}" method="post">
-            <label for="name">Name:</label>
+        <h2>Add New Group</h2>
+        <form action="#" th:action="@{/groups}" th:object="${group}" method="post">
+            <label for="name">Group Name:</label>
             <input type="text" id="name" th:field="*{name}" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" th:field="*{email}" required>
-            <button type="submit">Add User</button>
+            <button type="submit">Add Group</button>
         </form>
     </div>
 
-    <h2>Existing Users</h2>
-    <table border="1">
+    <h2>Existing Groups</h2>
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Email</th>
+                <th>Users Count</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.id}"></td>
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.email}"></td>
+            <tr th:each="group : ${groups}">
+                <td th:text="${group.id}"></td>
+                <td th:text="${group.name}"></td>
+                <td th:text="${#sets.size(group.users)}"></td>
                 <td class="actions">
-                    <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
-                    <a th:href="@{/users/delete/{id}(id=${user.id})}" class="delete-link"
-                        onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    <a th:href="@{/groups/edit/{id}(id=${group.id})}">Edit</a>
+                    <a th:href="@{/groups/delete/{id}(id=${group.id})}" class="delete-link"
+                        onclick="return confirm('Are you sure you want to delete this group?');">Delete</a>
                 </td>
             </tr>
         </tbody>
