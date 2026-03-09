@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/groups")
 @RequiredArgsConstructor
 public class GroupController {
-
+    //원격 푸시를 위한 임시 주석
     private final GroupService groupService;
     private final UserService userService;
 
